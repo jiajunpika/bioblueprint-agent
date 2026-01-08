@@ -2,6 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { ScanResult, BioBlueprint } from "./types/bioblueprint";
 import { scannerPrompt } from "./prompts/scanner";
 import { analyzerPrompt } from "./prompts/analyzer";
+import { synthesizerPrompt } from "./prompts/synthesizer";
 import { ProcessedImage, ExifData } from "./utils/preprocess";
 
 const client = new Anthropic();
@@ -264,6 +265,38 @@ export function filterByConfidence(
   return filterObject(blueprint) || {};
 }
 
+export async function synthesize(inferenceResult: BioBlueprint): Promise<any> {
+  console.log("Synthesizing inference results into final BioBlueprint format...");
+
+  const response = await client.messages.create({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 16000,
+    system: synthesizerPrompt,
+    messages: [
+      {
+        role: "user",
+        content: `Convert the following inference results to final BioBlueprint format:\n\n${JSON.stringify(inferenceResult, null, 2)}`,
+      },
+    ],
+  });
+
+  // Extract text from response
+  const textBlock = response.content.find(
+    (block): block is Anthropic.TextBlock => block.type === "text"
+  );
+  if (!textBlock) {
+    throw new Error("No text response from synthesizer");
+  }
+
+  // Parse JSON from response
+  const jsonMatch = textBlock.text.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) {
+    throw new Error("No JSON found in synthesizer response");
+  }
+
+  return JSON.parse(jsonMatch[0]);
+}
+
 export async function analyzeWithTwoPhases(
   images: ProcessedImage[]
 ): Promise<BioBlueprint> {
@@ -307,5 +340,8 @@ export async function analyzeWithTwoPhases(
   console.log("\n========== Post-processing ==========");
   const filtered = filterByConfidence(blueprint, 0.8);
 
-  return filtered;
+  console.log("\n========== Phase 3: Synthesis ==========");
+  const finalBlueprint = await synthesize(filtered);
+
+  return finalBlueprint;
 }
