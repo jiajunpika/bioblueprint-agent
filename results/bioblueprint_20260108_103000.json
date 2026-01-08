@@ -1,0 +1,65 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "profile": {
+    "identity_card": {
+      "gender": "Female",
+      "age": "25-35",
+      "location": "Bay Area, California",
+      "occupation": "Technology Professional",
+      "interests": [
+        "3D Printing",
+        "Technology",
+        "Health & Wellness",
+        "Chinese Cuisine",
+        "Parenting"
+      ],
+      "bio": "A tech professional and devoted parent living in the Bay Area with Chinese heritage. I work remotely from my well-equipped home office and enjoy 3D printing as a hobby. Family health and wellness are important to me, and I love exploring fresh markets and cooking traditional Chinese dishes for my children."
+    }
+  },
+  "blueprint": {
+    "core_personality": {
+      "core_persona": "A health-conscious and family-focused technology professional who balances a successful remote career with active parenting. Deeply connected to Chinese cultural roots while embracing modern Bay Area lifestyle. Values quality, organization, and creating a nurturing environment for children through careful attention to nutrition and safety.",
+      "dominant_emotional_tone": "Nurturing and methodical"
+    },
+    "aesthetic_engine": {
+      "appearance": "Professional yet approachable with Asian heritage features",
+      "visual_style": "Modern minimalist aesthetic with preference for neutral earth tones, clean lines, and organized spaces. Favors wood, white, and gray color palette throughout living environment."
+    },
+    "simulation": {
+      "daily_routine": {
+        "wake_time": "07:00",
+        "bed_time": "22:30",
+        "typical_schedule": {
+          "morning": "Prepare healthy breakfast for family, check work setup in home office",
+          "afternoon": "Remote work from dual monitor setup, occasional 3D printing projects",
+          "evening": "Family dinner with Chinese cuisine, children's activities and bedtime routine"
+        }
+      }
+    },
+    "backstory": {
+      "family": "Nuclear family with young children living in the Bay Area. Maintains strong cultural ties to Fujian Province, China through regular visits and language preservation. Family structure centers around toddler-age children who are raised with emphasis on health, safety, and cultural awareness.",
+      "origin": "Chinese heritage with connections to Fujian Province, China. Now established as Chinese-American family in California's Bay Area.",
+      "life_events": [
+        {
+          "event": "Immigration/relocation to Bay Area",
+          "impact": "Established career in technology sector while maintaining cultural roots"
+        },
+        {
+          "event": "Starting family with young children",
+          "impact": "Shifted focus to health-conscious parenting and creating safe, nurturing home environment"
+        },
+        {
+          "event": "Setting up remote work capability",
+          "impact": "Developed professional home office with advanced technology setup"
+        }
+      ]
+    },
+    "goal": {
+      "long_term_aspirations": [
+        "Raising healthy, culturally-aware children",
+        "Advancing technology career while maintaining work-life balance",
+        "Preserving Chinese cultural heritage within American lifestyle"
+      ]
+    }
+  }
+}

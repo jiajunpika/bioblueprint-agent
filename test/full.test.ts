@@ -2,10 +2,24 @@ import "dotenv/config";
 import { preprocessImages, getExifSummary } from "../src/utils/preprocess";
 import { analyzeWithTwoPhases } from "../src/pipeline";
 import fs from "fs/promises";
+import path from "path";
+
+function generateOutputFilename(): string {
+  const now = new Date();
+  const timestamp = now.toISOString().replace(/[-:]/g, "").replace("T", "_").slice(0, 15);
+  return `bioblueprint_${timestamp}.json`;
+}
 
 async function main() {
   const inputDir = process.argv[2] || "/tmp/jiajun_converted";
-  const outputFile = process.argv[3] || "/tmp/bioblueprint_result.json";
+
+  // Default output to results directory with timestamp naming
+  const resultsDir = path.join(__dirname, "../results");
+  const defaultOutputFile = path.join(resultsDir, generateOutputFilename());
+  const outputFile = process.argv[3] || defaultOutputFile;
+
+  // Ensure results directory exists
+  await fs.mkdir(resultsDir, { recursive: true });
 
   console.log("=".repeat(60));
   console.log("BioBlueprint Agent - Full Test Run");
