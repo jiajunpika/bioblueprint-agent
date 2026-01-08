@@ -1,0 +1,443 @@
+{
+  "context": {
+    "images": [
+      {
+        "imageIndex": 0,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9,
+          "reasoning": "Photo selection interface with social media-style grid layout"
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85,
+          "reasoning": "Adding selected photos to a collection/story"
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8,
+          "reasoning": "User is selecting their own photos"
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [],
+          "timestamps": [
+            "28 4月",
+            "30 9月",
+            "30 9月",
+            "5 10月",
+            "4 12月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "I wouldn't do it again after trying it once",
+            "SPOTIFY.COM/WRAPPED",
+            "Save Your Tears",
+            "The Weeknd",
+            "Solitude"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 1,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [],
+          "timestamps": [
+            "24 12月",
+            "1 1月",
+            "5 1月",
+            "25 1月",
+            "3 4月",
+            "7 4月",
+            "25 4月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "Happy Holidays",
+            "EVERLAND INSIGHT",
+            "激动的心颤抖的手 回家见老婆孩子",
+            "Old town Shanghai",
+            "最近的上班搭子"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face",
+            "contains_location"
+          ]
+        }
+      },
+      {
+        "imageIndex": 2,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [
+            "@thebaby_tutu",
+            "@the_techno_community"
+          ],
+          "timestamps": [
+            "17 8月",
+            "25 8月",
+            "14 9月",
+            "15 9月",
+            "23 10月",
+            "13 12月",
+            "16 12月",
+            "17 12月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "转院肺炎了，吊水到大半夜真好累",
+            "未来优先要调整，保重身体，多多休息，多多健身",
+            "小家伙宣布化精高",
+            "chacosound",
+            "1:07",
+            "0:15",
+            "出口",
+            "EXIT",
+            "KEEP MOVING"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 3,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [
+            "@thebaby_tutu",
+            "@jurotonimaterridade",
+            "@awesome_motherhood",
+            "@sookyloo"
+          ],
+          "timestamps": [
+            "19 7月",
+            "24",
+            "29 7月",
+            "1 8月",
+            "14 8月",
+            "15 8月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "sick",
+            "Katy Perry's new version of Roar after becoming a parent 16 so cute",
+            "oddcloud",
+            "Roar but parent version",
+            "傲然了一课程您的我",
+            "安全带用来吃比较香",
+            "贝儿子的退烧贴hhhh",
+            "妈妈的童眼图的司"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 4,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [
+            "@jurotonimaterridade",
+            "@awesome_motherhood",
+            "@sookyloo"
+          ],
+          "timestamps": [
+            "19 6月",
+            "21 6月",
+            "7 7月",
+            "16 7月",
+            "17 7月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "流口水",
+            "吃米糊 抓小珍珠",
+            "看下一秒",
+            "0:59",
+            "0:07",
+            "When I finally put the baby to bed",
+            "Me trying to:",
+            "Manage 3 projects",
+            "妈妈的童眼图的司",
+            "0:06"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 5,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [
+            "@thebaby_tutu",
+            "@ddyong_lu",
+            "@nika.dwa"
+          ],
+          "timestamps": [
+            "6 6月",
+            "7 6月",
+            "11 6月",
+            "12 6月",
+            "14 6月",
+            "15 6月",
+            "18 6月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "一家四口都",
+            "我+老婆+小朋友+奶奶",
+            "听死",
+            "Dad vs bounce house",
+            "看给自己到的",
+            "Movies My List",
+            "Mother's Day",
+            "New on Netflix",
+            "今天我们来吃羊腿",
+            "今天吃拌约翰",
+            "今天吃小龙虾",
+            "最暖体验的网球非并改善后的剩体人代步车 不愿意道缘等 我县区有有到图明医馆需"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 6,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95
+        },
+        "contentDomain": {
+          "value": "social_media",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_posting",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "grid_overview",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.8
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [
+            "@ddyong_lu",
+            "@nika.dwa"
+          ],
+          "timestamps": [
+            "20 5月",
+            "30 5月",
+            "4 6月"
+          ],
+          "keyLabels": [
+            "加入精选",
+            "取消",
+            "继续"
+          ],
+          "otherText": [
+            "Get Shield!",
+            "The taste of sweet corn.",
+            "研究奶嘴",
+            "sleeping baby",
+            "a wiggle cooked",
+            "除期宾小朋友吃口麦",
+            "我",
+            "That time my husband created a club for our kids",
+            "一家四口都",
+            "我+老婆+小朋友+奶奶",
+            "0:10",
+            "0:19"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      }
+    ],
+    "summary": {
+      "dominantSourceType": "app_screenshot",
+      "dominantDomain": "social_media",
+      "dominantFormat": "grid_overview",
+      "detectedUsernames": [
+        "@thebaby_tutu",
+        "@the_techno_community",
+        "@jurotonimaterridade",
+        "@awesome_motherhood",
+        "@sookyloo",
+        "@ddyong_lu",
+        "@nika.dwa"
+      ],
+      "detectedApps": [
+        "Unknown (likely photo management/social media app)"
+      ],
+      "overallPrivacyLevel": "medium"
+    }
+  }
+}

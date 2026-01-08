@@ -1,22 +1,14 @@
 import "dotenv/config";
 import { preprocessImages, getExifSummary } from "../src/utils/preprocess";
-import { analyzeWithTwoPhases } from "../src/pipeline";
+import { analyzeWithAllPhases, AnalysisResult } from "../src/pipeline";
+import { readMeta, updateMetaContext } from "../src/utils/meta";
+import { MetaFile } from "../src/types/meta";
 import fs from "fs/promises";
 import path from "path";
 
-function generateOutputFilename(): string {
-  const now = new Date();
-  const timestamp = now.toISOString().replace(/[-:]/g, "").replace("T", "_").slice(0, 15);
-  return `bioblueprint_${timestamp}.json`;
-}
-
 async function main() {
   const inputDir = process.argv[2] || path.join(__dirname, "../datasets/jiajun_album_samples");
-
-  // Default output to results directory with timestamp naming
   const resultsDir = path.join(__dirname, "../results");
-  const defaultOutputFile = path.join(resultsDir, generateOutputFilename());
-  const outputFile = process.argv[3] || defaultOutputFile;
 
   // Ensure results directory exists
   await fs.mkdir(resultsDir, { recursive: true });
@@ -24,6 +16,24 @@ async function main() {
   console.log("=".repeat(60));
   console.log("BioBlueprint Agent - Full Test Run");
   console.log("=".repeat(60));
+  console.log(`Dataset: ${inputDir}`);
+
+  // Step 0: Read meta.json if exists
+  console.log("\n[Step 0] Loading meta.json...\n");
+  let meta: MetaFile = {};
+  try {
+    meta = await readMeta(inputDir);
+    if (meta.known && Object.keys(meta.known).length > 0) {
+      console.log("Known info found:");
+      for (const [key, value] of Object.entries(meta.known)) {
+        console.log(`  - ${key}: ${value}`);
+      }
+    } else {
+      console.log("No known info in meta.json");
+    }
+  } catch (e) {
+    console.log("No meta.json found, will create one with context");
+  }
 
   // Step 1: Preprocess images
   console.log("\n[Step 1] Preprocessing images...\n");
@@ -58,16 +68,23 @@ async function main() {
   const startAnalysis = Date.now();
 
   try {
-    // Pass ProcessedImage[] directly (includes EXIF data)
-    const blueprint = await analyzeWithTwoPhases(processedImages);
+    // Run full analysis with context detection
+    const result: AnalysisResult = await analyzeWithAllPhases(processedImages, { meta });
     const analysisTime = ((Date.now() - startAnalysis) / 1000).toFixed(1);
 
     console.log(`\nAnalysis complete in ${analysisTime}s`);
 
+    // Save context to meta.json if detected
+    if (result.context) {
+      await updateMetaContext(inputDir, result.context);
+      console.log(`\nContext saved to ${inputDir}/meta.json`);
+    }
+
     // Use character_name for filename if available
+    const blueprint = result.blueprint;
     const characterName = blueprint.character_name || "unknown";
     const finalOutputFile = process.argv[3]
-      ? outputFile
+      ? process.argv[3]
       : path.join(resultsDir, `${characterName}.json`);
 
     // Save result

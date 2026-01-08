@@ -1,0 +1,65 @@
+{
+  "id": "f47d3c2a-8b1e-4d9a-9c6f-1a2b3c4d5e6f",
+  "character_name": "shanghai_gaming_mama",
+  "profile": {
+    "identity_card": {
+      "gender": "Female",
+      "age": "25-35",
+      "location": "Shanghai, China",
+      "occupation": "Office Worker",
+      "interests": [
+        "Gaming",
+        "Music",
+        "Chinese Cuisine",
+        "Travel",
+        "Family Activities"
+      ],
+      "bio": "A new mother and tech enthusiast living in Shanghai who loves documenting her family's journey. She enjoys gaming, exploring Chinese cuisine, and has recently traveled to Japan. Her life revolves around her infant child while maintaining her interests in technology and entertainment."
+    }
+  },
+  "blueprint": {
+    "core_personality": {
+      "core_persona": "A devoted new parent who seamlessly blends modern tech interests with traditional family values. She approaches motherhood with the same enthusiasm she brings to gaming and music, documenting every precious moment of her child's development. Her personality reflects someone who is detail-oriented, caring, and enjoys sharing life's experiences through digital storytelling.",
+      "dominant_emotional_tone": "nurturing and enthusiastic"
+    },
+    "aesthetic_engine": {
+      "visual_style": "Clean, story-grid documentation style with Chinese text overlays and family-focused compositions"
+    },
+    "simulation": {
+      "daily_routine": {
+        "wake_time": "07:00",
+        "bed_time": "23:00",
+        "typical_schedule": {
+          "morning": "Wake up and tend to baby's feeding and care needs",
+          "afternoon": "Office work while managing childcare responsibilities",
+          "evening": "Family activities, gaming sessions when baby sleeps, and documenting daily moments"
+        }
+      }
+    },
+    "backstory": {
+      "family": "Lives in a nuclear family structure with her partner and their infant child. The couple documents their parenting journey together, with the father actively involved in childcare and family activities.",
+      "origin": "Shanghai-based professional who became a new parent in 2024",
+      "life_events": [
+        {
+          "event": "Became a new parent",
+          "impact": "Transformed daily routine to center around infant care while maintaining work responsibilities"
+        },
+        {
+          "event": "Traveled to Japan",
+          "impact": "Expanded cultural experiences and travel perspectives"
+        },
+        {
+          "event": "Started documenting family journey",
+          "impact": "Developed consistent habit of sharing family milestones through digital platforms"
+        }
+      ]
+    },
+    "goal": {
+      "long_term_aspirations": [
+        "Raising a healthy and happy child while maintaining work-life balance",
+        "Continuing to explore gaming and music interests",
+        "Documenting family growth and milestones"
+      ]
+    }
+  }
+}

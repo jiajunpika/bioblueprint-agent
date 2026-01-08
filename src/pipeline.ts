@@ -1,8 +1,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { ScanResult, BioBlueprint } from "./types/bioblueprint";
+import { ContextDetectionResult, MetaFile, KnownInfo } from "./types/meta";
 import { scannerPrompt } from "./prompts/scanner";
 import { analyzerPrompt } from "./prompts/analyzer";
 import { synthesizerPrompt } from "./prompts/synthesizer";
+import { contextDetectorPrompt } from "./prompts/contextDetector";
 import { ProcessedImage, ExifData } from "./utils/preprocess";
 
 const client = new Anthropic();
@@ -110,6 +112,69 @@ function buildExifSummary(images: ProcessedImage[]): string {
   }
 
   return summary;
+}
+
+// Phase 0: Context Detection
+export async function detectContext(images: ProcessedImage[]): Promise<ContextDetectionResult> {
+  console.log(`Detecting context for ${images.length} images...`);
+
+  const content: ContentBlock[] = [
+    {
+      type: "text",
+      text: `Analyze the context of the following ${images.length} images:`,
+    },
+  ];
+
+  for (let i = 0; i < images.length; i++) {
+    const img = images[i];
+    const exifInfo = formatExifInfo(img.exif);
+
+    content.push({
+      type: "text",
+      text: `\n--- Image ${i} (${img.filename})${exifInfo} ---`,
+    });
+    content.push({
+      type: "image",
+      source: {
+        type: "base64",
+        media_type: "image/jpeg",
+        data: img.base64,
+      },
+    });
+  }
+
+  const response = await client.messages.create({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 8000,
+    system: contextDetectorPrompt,
+    messages: [
+      {
+        role: "user",
+        content: content,
+      },
+    ],
+  });
+
+  const textBlock = response.content.find(
+    (block): block is Anthropic.TextBlock => block.type === "text"
+  );
+  if (!textBlock) {
+    throw new Error("No text response from context detector");
+  }
+
+  const jsonMatch = textBlock.text.match(/\{[\s\S]*\}/);
+  if (!jsonMatch) {
+    throw new Error("No JSON found in context detector response");
+  }
+
+  try {
+    return JSON.parse(jsonMatch[0]) as ContextDetectionResult;
+  } catch (e) {
+    const fs = require("fs");
+    fs.writeFileSync("/tmp/context_raw_response.txt", textBlock.text);
+    console.error("JSON parse error. Raw response saved to /tmp/context_raw_response.txt");
+    throw e;
+  }
 }
 
 export async function scanImages(images: ProcessedImage[]): Promise<ScanResult> {
@@ -305,9 +370,42 @@ export async function synthesize(inferenceResult: BioBlueprint): Promise<any> {
   return JSON.parse(jsonMatch[0]);
 }
 
-export async function analyzeWithTwoPhases(
-  images: ProcessedImage[]
-): Promise<BioBlueprint> {
+export interface AnalysisOptions {
+  meta?: MetaFile;
+  skipContextDetection?: boolean;
+}
+
+export interface AnalysisResult {
+  blueprint: BioBlueprint;
+  context?: ContextDetectionResult;
+  meta?: MetaFile;
+}
+
+export async function analyzeWithAllPhases(
+  images: ProcessedImage[],
+  options: AnalysisOptions = {}
+): Promise<AnalysisResult> {
+  let contextResult: ContextDetectionResult | undefined;
+
+  // Phase 0: Context Detection
+  if (!options.skipContextDetection) {
+    console.log("\n========== Phase 0: Context Detection ==========");
+    contextResult = await detectContext(images);
+
+    console.log(`\nContext detected:`);
+    console.log(`  - Source: ${contextResult.summary.dominantSourceType}`);
+    console.log(`  - Domain: ${contextResult.summary.dominantDomain}`);
+    console.log(`  - Format: ${contextResult.summary.dominantFormat}`);
+    if (contextResult.summary.detectedApps.length > 0) {
+      console.log(`  - Apps: ${contextResult.summary.detectedApps.join(", ")}`);
+    }
+    if (contextResult.summary.detectedUsernames.length > 0) {
+      console.log(`  - Usernames: ${contextResult.summary.detectedUsernames.join(", ")}`);
+    }
+    console.log(`  - Privacy: ${contextResult.summary.overallPrivacyLevel}`);
+  }
+
+  // Phase 1: Quick Scan
   console.log("\n========== Phase 1: Quick Scan ==========");
   const scanResult = await scanImages(images);
 
@@ -336,6 +434,7 @@ export async function analyzeWithTwoPhases(
     );
   }
 
+  // Phase 2: Deep Analysis
   console.log("\n========== Phase 2: Deep Analysis ==========");
 
   // Extract focus areas from high confidence cross-references
@@ -345,11 +444,65 @@ export async function analyzeWithTwoPhases(
 
   const blueprint = await deepAnalyze(images, scanResult, focusAreas);
 
+  // Post-processing
   console.log("\n========== Post-processing ==========");
   const filtered = filterByConfidence(blueprint, 0.8);
 
+  // Phase 3: Synthesis
   console.log("\n========== Phase 3: Synthesis ==========");
-  const finalBlueprint = await synthesize(filtered);
 
-  return finalBlueprint;
+  // Merge known info with inferred if meta provided
+  const knownInfo = options.meta?.known || {};
+  const synthesisInput = {
+    ...filtered,
+    _knownInfo: knownInfo,
+    _context: contextResult?.summary,
+  };
+
+  const finalBlueprint = await synthesize(synthesisInput);
+
+  // Apply known info overrides with source tracking
+  if (Object.keys(knownInfo).length > 0) {
+    applyKnownInfo(finalBlueprint, knownInfo);
+  }
+
+  return {
+    blueprint: finalBlueprint,
+    context: contextResult,
+    meta: options.meta,
+  };
+}
+
+// Apply known info to blueprint with source tracking
+function applyKnownInfo(blueprint: any, known: KnownInfo): void {
+  if (!blueprint.profile?.identity_card) return;
+
+  const card = blueprint.profile.identity_card;
+
+  if (known.gender) {
+    card.gender = { value: known.gender, source: "user_input" };
+  }
+  if (known.username) {
+    card.username = { value: known.username, source: "user_input" };
+  }
+  if (known.name) {
+    card.name = { value: known.name, source: "user_input" };
+  }
+  if (known.ageRange) {
+    card.age = { value: known.ageRange, source: "user_input" };
+  }
+  if (known.location) {
+    card.location = { value: known.location, source: "user_input" };
+  }
+  if (known.occupation) {
+    card.occupation = { value: known.occupation, source: "user_input" };
+  }
+}
+
+// Legacy function for backwards compatibility
+export async function analyzeWithTwoPhases(
+  images: ProcessedImage[]
+): Promise<BioBlueprint> {
+  const result = await analyzeWithAllPhases(images, { skipContextDetection: true });
+  return result.blueprint;
 }
