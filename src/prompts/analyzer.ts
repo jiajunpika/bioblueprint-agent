@@ -99,11 +99,11 @@ For array fields (like hobbies, places):
 
 ## Confidence Thresholds
 
-- 0.9+: Direct EXIF GPS or clear OCR text
-- 0.8-0.9: Multiple image confirmation (3+ images)
-- 0.7-0.8: Clear visual evidence with 2 images
-- 0.6-0.7: Single occurrence with clear visual
-- <0.6: Do NOT include
+- 0.95+: Direct EXIF GPS coordinates
+- 0.9+: Clear OCR text evidence
+- 0.85-0.9: Multiple image confirmation (4+ images)
+- 0.8-0.85: Multiple image confirmation (3 images) with clear evidence
+- <0.8: Do NOT include (will be filtered out)
 
 ## What NOT to Include
 
@@ -112,6 +112,6 @@ For array fields (like hobbies, places):
 - Assumptions based on stereotypes
 - Information not visible in images
 - Fields where you're unsure
-- Any field with confidence < 0.6
+- Any field with confidence < 0.8
 
 Output: Pure JSON only, no explanation. Only include categories that have content.`;

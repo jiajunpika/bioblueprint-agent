@@ -305,7 +305,7 @@ export async function analyzeWithTwoPhases(
   const blueprint = await deepAnalyze(images, scanResult, focusAreas);
 
   console.log("\n========== Post-processing ==========");
-  const filtered = filterByConfidence(blueprint, 0.6);
+  const filtered = filterByConfidence(blueprint, 0.8);
 
   return filtered;
 }
