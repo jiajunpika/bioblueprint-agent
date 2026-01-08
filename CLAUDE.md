@@ -6,11 +6,11 @@
 
 ```
 datasets/
-├── jiajun/          # 第一个测试数据集
+├── jiajun_album_samples/    # 相册随机选取 (22张)
 │   ├── IMG_3498.JPG
-│   ├── IMG_3566.JPG
 │   └── ...
-├── dataset_name/    # 其他数据集
+├── instagram_story_grid/    # Story 合集缩略图 (7张)
+│   ├── IMG_8468.PNG
 │   └── ...
 ```
 
@@ -36,14 +36,14 @@ bioblueprint_YYYYMMDD_HHMMSS.json
 ## 运行测试
 
 ```bash
-# 使用默认数据集 (datasets/jiajun)
+# 使用默认数据集 (datasets/jiajun_album_samples)
 npm run test:full
 
 # 指定数据集
-npm run test:full datasets/other_dataset
+npm run test:full datasets/instagram_story_grid
 
 # 指定数据集和输出文件
-npm run test:full datasets/jiajun results/custom_name.json
+npm run test:full datasets/jiajun_album_samples results/custom_name.json
 ```
 
 ## 代码注释语言
