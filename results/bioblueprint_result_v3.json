@@ -1,0 +1,166 @@
+{
+  "corePersonality": {
+    "familyOriented": {
+      "value": "deeply family-focused with young children",
+      "confidence": 0.95,
+      "evidence": [
+        "img_0: baby with toy",
+        "img_1: two young children outdoor photo",
+        "img_2: same children posed together",
+        "img_16: child at playground",
+        "img_18: child at toy store",
+        "img_19: child eating at home"
+      ],
+      "inferredFrom": "Children appear in 6+ images across different locations and timeframes"
+    },
+    "culturallyConnected": {
+      "value": "maintains strong connections to Chinese culture",
+      "confidence": 0.9,
+      "evidence": [
+        "img_0: GPS 26.090997, 119.245314 (China)",
+        "img_1: GPS 26.096286, 119.287561 (China)",
+        "img_2: GPS 26.096281, 119.287561 (China)",
+        "img_14: Chinese text interface"
+      ],
+      "inferredFrom": "Recent trip to China with family and Chinese language usage"
+    },
+    "practical": {
+      "value": "pragmatic approach to daily life and parenting",
+      "confidence": 0.8,
+      "evidence": [
+        "img_4: car seats shopping",
+        "img_9: baby products shopping",
+        "img_10: children's vitamins shopping"
+      ],
+      "inferredFrom": "Consistent focus on practical family needs"
+    }
+  },
+  "careerEngine": {
+    "techProfessional": {
+      "value": "works in technology field",
+      "confidence": 0.85,
+      "evidence": [
+        "img_5: dual monitor setup",
+        "img_8: 3D printer with technical equipment",
+        "img_20: ergonomic split keyboard setup"
+      ],
+      "inferredFrom": "Professional tech setup with specialized equipment"
+    },
+    "workFromHome": {
+      "value": "remote work setup at home",
+      "confidence": 0.8,
+      "evidence": [
+        "img_5: home office with dual monitors",
+        "img_20: professional keyboard at home workspace"
+      ],
+      "inferredFrom": "Multiple images of professional work equipment in home setting"
+    }
+  },
+  "aestheticEngine": {
+    "minimalistDecor": {
+      "value": "clean, modern home aesthetic",
+      "confidence": 0.75,
+      "evidence": [
+        "img_13: modern furniture showroom",
+        "img_15: clean organized bedroom setup"
+      ],
+      "inferredFrom": "Furniture shopping and home organization preferences"
+    },
+    "functionalDesign": {
+      "value": "prioritizes functionality in home design",
+      "confidence": 0.7,
+      "evidence": [
+        "img_13: practical furniture selection",
+        "img_15: organized storage solutions"
+      ],
+      "inferredFrom": "Focus on practical home solutions"
+    }
+  },
+  "simulation": {
+    "currentLocation": {
+      "value": "Bay Area, California",
+      "confidence": 0.98,
+      "evidence": [
+        "img_3: GPS 37.377556, -122.076661",
+        "img_4: GPS 37.373875, -122.032181",
+        "img_5: GPS 37.385442, -122.053847",
+        "img_6: GPS 37.385467, -122.053833",
+        "15+ more Bay Area GPS coordinates"
+      ],
+      "inferredFrom": "16 images with GPS coordinates in San Francisco Bay Area"
+    },
+    "homeCooking": [
+      {
+        "value": "asian_cuisine",
+        "confidence": 0.8,
+        "evidence": [
+          "img_6: noodle soup with chopsticks",
+          "img_7: traditional soup preparation",
+          "img_21: home-cooked meal spread"
+        ],
+        "inferredFrom": "Multiple home-cooked Asian meals"
+      }
+    ],
+    "parentingActivities": [
+      {
+        "value": "educational_shopping",
+        "confidence": 0.85,
+        "evidence": [
+          "img_9: baby product shopping",
+          "img_10: children's vitamins",
+          "img_18: educational toys"
+        ],
+        "inferredFrom": "Regular shopping for children's developmental needs"
+      },
+      {
+        "value": "outdoor_activities",
+        "confidence": 0.8,
+        "evidence": [
+          "img_16: playground visit",
+          "img_17: nature photography"
+        ],
+        "inferredFrom": "Active outdoor engagement with children"
+      }
+    ],
+    "timeframe": {
+      "value": "November 2025 to January 2026",
+      "confidence": 0.95,
+      "evidence": [
+        "EXIF timestamps from 2025-11-27 to 2026-01-07"
+      ],
+      "inferredFrom": "Image capture dates span 6-week period"
+    }
+  },
+  "backstory": {
+    "recentChinaVisit": {
+      "value": "family trip to China in December 2025",
+      "confidence": 0.9,
+      "evidence": [
+        "img_0: GPS 26.090997, 119.245314 taken 2025-12-09",
+        "img_1: GPS 26.096286, 119.287561 taken 2025-12-13",
+        "img_2: GPS 26.096281, 119.287561 taken 2025-12-13"
+      ],
+      "inferredFrom": "GPS coordinates in Fujian Province, China with children present"
+    },
+    "establishedBayAreaResident": {
+      "value": "settled resident of San Francisco Bay Area",
+      "confidence": 0.9,
+      "evidence": [
+        "16+ GPS coordinates across Peninsula and South Bay",
+        "home setup with established workspace",
+        "regular local shopping patterns"
+      ],
+      "inferredFrom": "Extensive local GPS data and established home environment"
+    },
+    "immigrantFamily": {
+      "value": "Chinese immigrant family maintaining cultural ties",
+      "confidence": 0.85,
+      "evidence": [
+        "China family visit",
+        "Chinese language interface",
+        "traditional cooking practices"
+      ],
+      "inferredFrom": "Cultural maintenance while living in US"
+    }
+  }
+}

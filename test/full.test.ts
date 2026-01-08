@@ -1,0 +1,71 @@
+import "dotenv/config";
+import { preprocessImages, getExifSummary } from "../src/utils/preprocess";
+import { analyzeWithTwoPhases } from "../src/pipeline";
+import fs from "fs/promises";
+
+async function main() {
+  const inputDir = process.argv[2] || "/tmp/jiajun_converted";
+  const outputFile = process.argv[3] || "/tmp/bioblueprint_result.json";
+
+  console.log("=".repeat(60));
+  console.log("BioBlueprint Agent - Full Test Run");
+  console.log("=".repeat(60));
+
+  // Step 1: Preprocess images
+  console.log("\n[Step 1] Preprocessing images...\n");
+  const startPreprocess = Date.now();
+  const processedImages = await preprocessImages(inputDir, {
+    maxWidth: 800, // Reduced for multi-image API limit (max 2000px)
+    maxSize: 150 * 1024,
+    quality: 70,
+  });
+  const preprocessTime = ((Date.now() - startPreprocess) / 1000).toFixed(1);
+  console.log(
+    `\nPreprocessing complete: ${processedImages.length} images in ${preprocessTime}s`
+  );
+
+  // Print EXIF summary
+  console.log(`\n${getExifSummary(processedImages)}`);
+
+  // Calculate total size
+  const totalBase64Size = processedImages.reduce(
+    (sum, img) => sum + img.base64.length,
+    0
+  );
+  console.log(`Total base64 size: ${(totalBase64Size / 1024 / 1024).toFixed(1)} MB`);
+
+  // Step 2: Run analysis pipeline
+  console.log("\n[Step 2] Running analysis pipeline...\n");
+  const startAnalysis = Date.now();
+
+  try {
+    // Pass ProcessedImage[] directly (includes EXIF data)
+    const blueprint = await analyzeWithTwoPhases(processedImages);
+    const analysisTime = ((Date.now() - startAnalysis) / 1000).toFixed(1);
+
+    console.log(`\nAnalysis complete in ${analysisTime}s`);
+
+    // Save result
+    await fs.writeFile(outputFile, JSON.stringify(blueprint, null, 2));
+    console.log(`\nResult saved to: ${outputFile}`);
+
+    // Print summary
+    console.log("\n" + "=".repeat(60));
+    console.log("Result Summary:");
+    console.log("=".repeat(60));
+    console.log(JSON.stringify(blueprint, null, 2));
+  } catch (error: any) {
+    console.error("\nAnalysis failed:", error.message);
+    if (error.response) {
+      console.error("API Response:", error.response);
+    }
+    process.exit(1);
+  }
+
+  const totalTime = ((Date.now() - startPreprocess) / 1000).toFixed(1);
+  console.log("\n" + "=".repeat(60));
+  console.log(`Total time: ${totalTime}s`);
+  console.log("=".repeat(60));
+}
+
+main().catch(console.error);

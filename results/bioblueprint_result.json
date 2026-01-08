@@ -1,0 +1,130 @@
+{
+  "profile": {
+    "identityCard": {
+      "gender": {
+        "value": "female",
+        "confidence": 0.85,
+        "evidence": [
+          "image_14 selfie of woman"
+        ]
+      },
+      "age": {
+        "value": "25-35",
+        "confidence": 0.75,
+        "evidence": [
+          "image_14 appearance",
+          "young children suggest parent age range"
+        ]
+      }
+    }
+  },
+  "blueprint": {
+    "simulation": {
+      "hobbies": [
+        {
+          "value": "technology_enthusiast",
+          "confidence": 0.8,
+          "evidence": [
+            "image_5 dual monitor setup",
+            "image_8 3D printer",
+            "image_20 ergonomic keyboard"
+          ]
+        },
+        {
+          "value": "photography",
+          "confidence": 0.75,
+          "evidence": [
+            "image_14 phone camera interface",
+            "multiple food photography"
+          ]
+        }
+      ],
+      "household": [
+        {
+          "value": "has_young_children",
+          "confidence": 0.9,
+          "evidence": [
+            "image_0 baby with toys",
+            "image_1 two young children outdoors",
+            "image_16 child in museum",
+            "image_18 child with toys",
+            "image_19 child eating"
+          ]
+        },
+        {
+          "value": "baby_in_household",
+          "confidence": 0.9,
+          "evidence": [
+            "image_0 baby with striped outfit and toys"
+          ]
+        }
+      ],
+      "foodPreferences": [
+        {
+          "value": "asian_cuisine",
+          "confidence": 0.85,
+          "evidence": [
+            "image_6 asian noodle soup",
+            "image_11 korean bbq setting",
+            "image_21 asian dishes"
+          ]
+        },
+        {
+          "value": "fresh_seafood",
+          "confidence": 0.8,
+          "evidence": [
+            "image_3 fish market display"
+          ]
+        },
+        {
+          "value": "healthy_eating",
+          "confidence": 0.75,
+          "evidence": [
+            "image_12 fresh fruits and vegetables"
+          ]
+        }
+      ],
+      "locations": [
+        {
+          "value": "museums_and_cultural_sites",
+          "confidence": 0.8,
+          "evidence": [
+            "image_16 museum interior with child"
+          ]
+        },
+        {
+          "value": "outdoor_parks",
+          "confidence": 0.75,
+          "evidence": [
+            "image_1 outdoor setting with children",
+            "image_17 nature photography"
+          ]
+        }
+      ]
+    },
+    "backstory": {
+      "family": {
+        "value": "parent_with_multiple_children",
+        "confidence": 0.9,
+        "evidence": [
+          "image_0 baby care",
+          "image_1 two children",
+          "image_16 child at museum",
+          "image_18 child shopping",
+          "image_19 child eating"
+        ]
+      }
+    },
+    "aestheticEngine": {
+      "homeStyle": {
+        "value": "modern_minimalist",
+        "confidence": 0.75,
+        "evidence": [
+          "image_5 clean workspace setup",
+          "image_15 ikea furniture style",
+          "image_19 modern kitchen"
+        ]
+      }
+    }
+  }
+}

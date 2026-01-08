@@ -1,0 +1,129 @@
+{
+  "profile": {
+    "identityCard": {
+      "gender": {
+        "value": "female",
+        "confidence": 0.9,
+        "evidence": [
+          "Female face visible in img_14"
+        ]
+      },
+      "age": {
+        "value": "25-35",
+        "confidence": 0.75,
+        "evidence": [
+          "Adult appearance with young children suggests parent age range"
+        ]
+      },
+      "language": {
+        "value": "chinese",
+        "confidence": 0.9,
+        "evidence": [
+          "Chinese text '24 周三 下午 6:45 Check 信箱' in img_14"
+        ]
+      }
+    }
+  },
+  "blueprint": {
+    "simulation": {
+      "hobbies": [
+        {
+          "value": "technology_maker",
+          "confidence": 0.85,
+          "evidence": [
+            "3D printer setup in img_8",
+            "Dual monitor workspace in img_5",
+            "Ergonomic split keyboard in img_20"
+          ],
+          "inferredFrom": "Multiple images show advanced technology setup and 3D printing hobby"
+        },
+        {
+          "value": "nature_photography",
+          "confidence": 0.7,
+          "evidence": [
+            "White bird photography in img_17",
+            "Outdoor activities with children"
+          ],
+          "inferredFrom": "Wildlife photography suggests nature interest"
+        }
+      ],
+      "household": {
+        "value": "family_with_young_children",
+        "confidence": 0.95,
+        "evidence": [
+          "Baby in high chair img_0",
+          "Two children sitting together img_1,2",
+          "Child in toy store img_18",
+          "Young child eating img_19"
+        ],
+        "inferredFrom": "Same children appear across 10+ images showing family life"
+      },
+      "foodPreferences": [
+        {
+          "value": "asian_cuisine",
+          "confidence": 0.85,
+          "evidence": [
+            "Noodle soup with chopsticks img_6",
+            "Chinese herbal soup img_7",
+            "Korean BBQ setting img_11"
+          ],
+          "inferredFrom": "3 images consistently show Asian food preparation and dining"
+        }
+      ],
+      "workStyle": {
+        "value": "remote_work",
+        "confidence": 0.9,
+        "evidence": [
+          "Dual monitor home office setup img_5",
+          "Ergonomic split keyboard workspace img_20",
+          "3D printer in workspace img_8"
+        ],
+        "inferredFrom": "Professional home office setup indicates remote work"
+      }
+    },
+    "backstory": {
+      "family": {
+        "value": "parent_of_multiple_children",
+        "confidence": 0.95,
+        "evidence": [
+          "Baby feeding in img_0",
+          "Two children in outdoor photos img_1,2",
+          "Child shopping for toys img_18",
+          "Toddler at mealtime img_19"
+        ]
+      },
+      "profession": {
+        "value": "technology_professional",
+        "confidence": 0.8,
+        "evidence": [
+          "Advanced dual monitor setup img_5",
+          "Professional ergonomic keyboard img_20",
+          "3D printer for prototyping img_8"
+        ],
+        "inferredFrom": "High-end tech equipment suggests technology career"
+      }
+    },
+    "aestheticEngine": {
+      "homeStyle": {
+        "value": "modern_minimalist",
+        "confidence": 0.8,
+        "evidence": [
+          "Clean dual monitor setup img_5",
+          "Modern IKEA-style furniture img_15",
+          "Minimalist workspace img_20"
+        ]
+      },
+      "shoppingBehavior": {
+        "value": "health_conscious_organic",
+        "confidence": 0.85,
+        "evidence": [
+          "WELEDA organic baby products img_9",
+          "Fresh fish market shopping img_3",
+          "Organic kids vitamins img_10",
+          "Fresh fruit selection img_12"
+        ],
+        "inferredFrom": "4 images show consistent preference for organic and fresh foods"
+      }
+    }
+  }
+}

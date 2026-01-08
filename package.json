@@ -1,0 +1,38 @@
+{
+  "name": "bioblueprint-agent",
+  "version": "1.0.0",
+  "description": "BioBlueprint Image Analysis Agent using Claude Agent SDK",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "preprocess": "ts-node src/utils/preprocess.ts",
+    "test:preprocess": "ts-node test/preprocess.test.ts",
+    "test:scan": "ts-node test/scan.test.ts",
+    "test:full": "ts-node test/full.test.ts"
+  },
+  "keywords": [
+    "bioblueprint",
+    "claude",
+    "agent",
+    "image-analysis"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "dotenv": "^17.2.3",
+    "exif-parser": "^0.1.12",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
