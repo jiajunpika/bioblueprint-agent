@@ -55,3 +55,8 @@ npm run test:full datasets/jiajun_album_samples results/custom_name.json
 
 - 当前阈值：0.8
 - 低于阈值的字段不输出
+
+## 工作流程
+
+- 完成一次分析测试后，自动进行 commit 和 push
+- **当前项目使用 jiajunpika GitHub 账户**（`gh auth switch --user jiajunpika`）
