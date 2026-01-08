@@ -1,5 +1,24 @@
 # BioBlueprint Agent 项目规范
 
+## 数据集目录结构
+
+测试数据集保存在 `datasets/` 目录：
+
+```
+datasets/
+├── jiajun/          # 第一个测试数据集
+│   ├── IMG_3498.JPG
+│   ├── IMG_3566.JPG
+│   └── ...
+├── dataset_name/    # 其他数据集
+│   └── ...
+```
+
+命名规范：
+- 使用小写字母和下划线
+- 按人名或项目名命名
+- 每个数据集一个子目录
+
 ## 测试结果命名规范
 
 测试结果保存在 `results/` 目录，命名格式：
@@ -17,11 +36,14 @@ bioblueprint_YYYYMMDD_HHMMSS.json
 ## 运行测试
 
 ```bash
-# 使用默认路径，自动命名
-npm run test:full /path/to/images
+# 使用默认数据集 (datasets/jiajun)
+npm run test:full
 
-# 指定输出文件
-npm run test:full /path/to/images /path/to/output.json
+# 指定数据集
+npm run test:full datasets/other_dataset
+
+# 指定数据集和输出文件
+npm run test:full datasets/jiajun results/custom_name.json
 ```
 
 ## 代码注释语言

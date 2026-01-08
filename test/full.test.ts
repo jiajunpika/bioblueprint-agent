@@ -11,7 +11,7 @@ function generateOutputFilename(): string {
 }
 
 async function main() {
-  const inputDir = process.argv[2] || "/tmp/jiajun_converted";
+  const inputDir = process.argv[2] || path.join(__dirname, "../datasets/jiajun");
 
   // Default output to results directory with timestamp naming
   const resultsDir = path.join(__dirname, "../results");
