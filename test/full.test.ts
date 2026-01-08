@@ -64,9 +64,15 @@ async function main() {
 
     console.log(`\nAnalysis complete in ${analysisTime}s`);
 
+    // Use character_name for filename if available
+    const characterName = blueprint.character_name || "unknown";
+    const finalOutputFile = process.argv[3]
+      ? outputFile
+      : path.join(resultsDir, `${characterName}.json`);
+
     // Save result
-    await fs.writeFile(outputFile, JSON.stringify(blueprint, null, 2));
-    console.log(`\nResult saved to: ${outputFile}`);
+    await fs.writeFile(finalOutputFile, JSON.stringify(blueprint, null, 2));
+    console.log(`\nResult saved to: ${finalOutputFile}`);
 
     // Print summary
     console.log("\n" + "=".repeat(60));

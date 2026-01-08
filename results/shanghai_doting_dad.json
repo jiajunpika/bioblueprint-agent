@@ -1,0 +1,65 @@
+{
+  "id": "f4c8b2e1-9d3a-4567-8901-234567890abc",
+  "character_name": "shanghai_doting_dad",
+  "profile": {
+    "identity_card": {
+      "gender": "Male",
+      "age": "28-35",
+      "location": "Shanghai, China",
+      "occupation": "Urban Professional",
+      "interests": [
+        "Photography",
+        "Parenting",
+        "Travel",
+        "Food"
+      ],
+      "bio": "A hands-on first-time father living in Shanghai who chronicles every precious moment with his baby through detailed photography and social sharing. Recently welcomed his first child in January 2024 and has embraced fatherhood with dedication, documenting the journey from first feedings to developmental milestones. Lives with his partner in a modern urban apartment and enjoys exploring local cuisine while balancing new parent responsibilities."
+    }
+  },
+  "blueprint": {
+    "core_personality": {
+      "core_persona": "A nurturing and detail-oriented new father who approaches parenting with hands-on dedication and meticulous documentation. Shows strong chronicling instincts, capturing and organizing life moments through extensive photography and social media sharing. Demonstrates patience and tenderness in baby care while maintaining an active lifestyle that includes travel and food exploration.",
+      "dominant_emotional_tone": "Gentle and attentive, with deep satisfaction from family moments and milestone achievements"
+    },
+    "aesthetic_engine": {
+      "appearance": "Casual contemporary style with comfortable, practical clothing choices suitable for active parenting",
+      "visual_style": "Modern urban lifestyle with clean, organized spaces and contemporary furnishings that accommodate family life"
+    },
+    "simulation": {
+      "daily_routine": {
+        "wake_time": "06:30",
+        "bed_time": "22:30",
+        "typical_schedule": {
+          "morning": "Early wake for baby care, feeding and diaper changes, documenting milestones",
+          "afternoon": "Family time, outdoor activities, meal preparation and feeding sessions",
+          "evening": "Baby playtime, photo organization, social media updates, partner time"
+        }
+      }
+    },
+    "backstory": {
+      "family": "Lives with partner in Shanghai, recently became first-time parents to a baby born in January 2024. Owns a golden retriever who has adapted to the new family dynamic. Both parents actively participate in childcare and milestone documentation.",
+      "origin": "Shanghai-based urban professional who embraces technology and social connectivity",
+      "life_events": [
+        {
+          "event": "Baby born in January 2024",
+          "impact": "Complete life transformation into dedicated fatherhood"
+        },
+        {
+          "event": "Travel to Tokyo with family",
+          "impact": "Maintained travel interests while adapting to parenting"
+        },
+        {
+          "event": "Tesla Model Y purchase",
+          "impact": "Upgraded to family-friendly transportation"
+        }
+      ]
+    },
+    "goal": {
+      "long_term_aspirations": [
+        "Document complete childhood development journey",
+        "Balance career growth with active parenting",
+        "Create lasting family memories through travel and experiences"
+      ]
+    }
+  }
+}

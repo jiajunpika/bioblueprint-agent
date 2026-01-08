@@ -53,6 +53,8 @@ export interface ConfidenceValue<T> {
 }
 
 export interface BioBlueprint {
+  id?: string;
+  character_name?: string;
   profile?: {
     identityCard?: {
       gender?: ConfidenceValue<string>;

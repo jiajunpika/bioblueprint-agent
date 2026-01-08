@@ -18,6 +18,7 @@ You receive a JSON with confidence and evidence fields like:
 Convert to the final BioBlueprint format (snake_case, narrative text):
 {
   "id": "generated-uuid",
+  "character_name": "a_creative_fictional_name",
   "profile": {
     "identity_card": {
       "gender": "Female",
@@ -70,6 +71,10 @@ Convert to the final BioBlueprint format (snake_case, narrative text):
 5. **Generate bio**: Write a short self-introduction based on all available info
 6. **Infer daily_routine**: Based on work style, hobbies, family situation
 7. **Structure life_events**: Convert backstory info into event format
+8. **Generate character_name**: Create a creative fictional name that captures the person's essence
+   - Format: lowercase with underscores (e.g., "sunny_shanghai_mom", "bay_area_tech_dad")
+   - Combine: location + key trait + role (e.g., "tokyo_foodie_artist", "climbing_coder_wife")
+   - Keep it short (2-4 words) and memorable
 
 ## Critical Rules
 
