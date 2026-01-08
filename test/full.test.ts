@@ -28,11 +28,16 @@ async function main() {
   // Step 1: Preprocess images
   console.log("\n[Step 1] Preprocessing images...\n");
   const startPreprocess = Date.now();
-  const processedImages = await preprocessImages(inputDir, {
-    maxWidth: 800, // Reduced for multi-image API limit (max 2000px)
-    maxSize: 150 * 1024,
-    quality: 70,
-  });
+
+  // Use higher resolution for grid/collage images (story overview)
+  const isGridDataset = inputDir.includes("grid") || inputDir.includes("story");
+  const preprocessConfig = isGridDataset
+    ? { maxWidth: 1536, maxSize: 300 * 1024, quality: 85 }  // Higher res for grids
+    : { maxWidth: 800, maxSize: 150 * 1024, quality: 70 };   // Normal for single photos
+
+  console.log(`Using ${isGridDataset ? "HIGH" : "NORMAL"} resolution mode`);
+
+  const processedImages = await preprocessImages(inputDir, preprocessConfig);
   const preprocessTime = ((Date.now() - startPreprocess) / 1000).toFixed(1);
   console.log(
     `\nPreprocessing complete: ${processedImages.length} images in ${preprocessTime}s`

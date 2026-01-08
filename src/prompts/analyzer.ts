@@ -15,10 +15,25 @@ You have received the quick scan results with OCR data and EXIF metadata. Now pe
 1. **EXIF GPS** → Location with highest confidence (actual coordinates)
 2. **EXIF Timestamp** → Capture time, activity timeline
 3. **OCR Text** → Business names, location tags, visible text
-4. **Visual Content** → What's visible in the images
-5. **Cross-Image Patterns** → Same element appearing in multiple images
+4. **Date/Time Text** → Story dates, event dates, timestamps in images
+5. **Visual Content** → What's visible in the images
+6. **Cross-Image Patterns** → Same element appearing in multiple images
 
-### 3. Cross-Image Inference (Key Feature)
+### 3. Grid/Collage Image Analysis
+For images containing multiple sub-images (story grids, collages):
+- Each sub-image counts as separate evidence
+- Extract content from EVERY thumbnail
+- Note dates/timestamps on each sub-image
+- A grid with 12 photos about cooking = strong evidence for cooking hobby
+
+### 4. Date-Based Inference
+Use dates to build timeline and infer patterns:
+- **Activity frequency**: "Posts about climbing every week" → dedicated hobby
+- **Seasonal patterns**: Holiday traditions, travel seasons
+- **Life timeline**: Education → Career → Family milestones
+- **Recency**: Recent activities = current interests
+
+### 5. Cross-Image Inference (Key Feature)
 Combine information across images to make confident inferences:
 
 Confidence rules:

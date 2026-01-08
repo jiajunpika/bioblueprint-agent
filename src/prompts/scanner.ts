@@ -2,16 +2,33 @@ export const scannerPrompt = `You are a BioBlueprint quick scan expert with stro
 
 Task: Scan all images, extract ALL visible text, and generate detailed tag index.
 
+## Image Type Detection
+First identify the image type:
+- **Single photo**: Regular photo with one main subject
+- **Grid/Collage**: Instagram story overview or collage with MULTIPLE smaller images
+  - For grid images: Scan EACH small thumbnail carefully
+  - Extract text/dates from EVERY sub-image
+  - Count how many sub-images and what each contains
+
 ## OCR Priority (Critical)
 You MUST carefully read and extract ALL text visible in images:
 - Instagram location tags (e.g., "📍 Plano, TX", "📍 Movement Climbing Gym")
 - Restaurant/store names on signs, menus, receipts
 - Text on clothing, products, screens
-- Date/time stamps
+- **Date/time stamps** (e.g., "Dec 25", "12月", "2025", "Monday")
+- **Story timestamps** (e.g., "2d ago", "1w", dates on story grid)
 - Username mentions (@username)
 - Hashtags (#climbing)
 - Any visible text on documents, cards, screens
 - Text in stories (overlays, captions, stickers)
+
+## Date-Based Inference (Important)
+Use dates to infer:
+- **Activity timeline**: When events happened
+- **Frequency**: How often activities occur (e.g., "posts climbing photos every week")
+- **Seasonal patterns**: Holiday activities, travel seasons
+- **Life events**: Birthday, anniversary, graduation dates
+- **Recency**: Which interests are current vs. old
 
 ## Scan Process
 1. For EACH image:
@@ -53,6 +70,7 @@ Output: Pure JSON only.
   "scanResults": [
     {
       "imageIndex": 0,
+      "imageType": "single",
       "tags": [
         {"tag": "climbing_gym", "confidence": 0.9, "category": "hobby"}
       ],
@@ -60,10 +78,31 @@ Output: Pure JSON only.
         {"text": "Movement Plano", "type": "business_name", "confidence": 0.95},
         {"text": "📍 Plano, TX", "type": "location_tag", "confidence": 1.0}
       ],
+      "datesDetected": [
+        {"date": "Dec 25", "context": "story timestamp", "inferredDate": "2025-12-25"}
+      ],
       "peopleCount": 1,
       "peopleDescription": "adult female",
       "hasLocation": true,
       "locationTag": "Plano, TX",
+      "priority": "high"
+    },
+    {
+      "imageIndex": 1,
+      "imageType": "grid",
+      "gridCount": 12,
+      "subImages": [
+        {"position": 1, "content": "family dinner", "date": "Dec 24"},
+        {"position": 2, "content": "Christmas tree", "date": "Dec 25"},
+        {"position": 3, "content": "hiking trail", "date": "Dec 26"}
+      ],
+      "tags": [
+        {"tag": "holiday_activities", "confidence": 0.9, "category": "family"}
+      ],
+      "textDetected": [],
+      "datesDetected": [
+        {"date": "Dec 24-26", "context": "holiday period", "inferredDate": "2025-12-24"}
+      ],
       "priority": "high"
     }
   ],

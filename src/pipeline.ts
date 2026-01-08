@@ -152,7 +152,15 @@ export async function scanImages(images: ProcessedImage[]): Promise<ScanResult> 
     throw new Error("No JSON found in scanner response");
   }
 
-  return JSON.parse(jsonMatch[0]) as ScanResult;
+  try {
+    return JSON.parse(jsonMatch[0]) as ScanResult;
+  } catch (e) {
+    // Save raw response for debugging
+    const fs = require("fs");
+    fs.writeFileSync("/tmp/scanner_raw_response.txt", textBlock.text);
+    console.error("JSON parse error. Raw response saved to /tmp/scanner_raw_response.txt");
+    throw e;
+  }
 }
 
 export async function deepAnalyze(
