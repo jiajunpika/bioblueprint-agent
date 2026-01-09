@@ -101,8 +101,10 @@ async function processImage(
   filePath: string,
   options: PreprocessOptions
 ): Promise<Buffer> {
+  // Ensure both dimensions are within maxWidth limit
+  // (Claude API requires max 2000px per dimension for multi-image requests)
   return sharp(filePath)
-    .resize(options.maxWidth, null, {
+    .resize(options.maxWidth, options.maxWidth, {
       withoutEnlargement: true,
       fit: "inside",
     })

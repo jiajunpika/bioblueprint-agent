@@ -1,0 +1,55 @@
+# BioBlueprint Agent 项目记忆
+
+## 部署信息
+- **本地服务器**: http://127.0.0.1:3000
+- **生产环境**: https://bioblueprint-api.onrender.com
+- **GitHub 仓库**: https://github.com/jiajunpika/bioblueprint-agent.git
+- **Render 服务 ID**: srv-d5go15vpm1nc73ebb5bg
+
+## API 端点
+- `GET /` - 前端测试页面
+- `GET /health` - 健康检查
+- `POST /api/analyze` - 上传图片分析（支持拖拽和文件选择）
+- `GET /api/datasets` - 列出测试数据集
+- `POST /api/analyze-dataset` - 使用测试数据集分析
+- `GET /api/task/:id` - 查询任务状态（轮询）
+
+## 测试数据集
+- `jiajun_album_samples` - 22 张相册照片
+- `instagram_story_grid` - 7 张 Story 缩略图
+
+## 已知问题（2026-01-09 测试发现）
+1. **图片尺寸限制** - ✅ 已修复
+   - 问题：Claude API 多图请求时，单张图片最大 2000 像素
+   - 错误：`invalid_request_error: image dimensions exceed max allowed size`
+   - 修复：`src/utils/preprocess.ts` - 确保宽度和高度都限制在 maxWidth 内
+   - 测试通过：instagram_story_grid (7张大图) 成功分析
+
+## 测试记录
+### 2026-01-09 Claude in Chrome 测试
+- ✅ 前端界面加载正常
+- ✅ 数据集列表显示正常
+- ✅ 选择数据集功能正常
+- ✅ 异步任务创建成功
+- ✅ 状态轮询工作正常
+- ✅ 图片预处理：7张大图（7-10MB）压缩到 84-110KB
+- ✅ Phase 0 Context Detection 成功检测到 social_media + grid_overview
+- ✅ 完整分析流程通过，返回 character_name: "shanghai_new_dad"
+
+## 前端功能
+- 拖拽上传图片
+- 选择测试数据集
+- 实时显示分析状态（pending/processing/completed/failed）
+- 展示 JSON 格式分析结果
+- 每 3 秒轮询任务状态
+
+## 部署流程
+1. 修改代码
+2. `git add . && git commit -m "message"`
+3. `git push` (确保使用 jiajunpika 账户)
+4. Render 自动部署（3-5 分钟）
+
+## 环境变量
+- `ANTHROPIC_API_KEY` - Claude API 密钥
+- `NODE_ENV=production`
+- `PORT` - 端口（Render 自动分配）
