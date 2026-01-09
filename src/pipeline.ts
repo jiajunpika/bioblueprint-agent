@@ -193,7 +193,7 @@ export async function scanImages(images: ProcessedImage[]): Promise<ScanResult> 
 
   const response = await client.messages.create({
     model: "claude-sonnet-4-20250514",
-    max_tokens: 8000,
+    max_tokens: 16000,
     system: scannerPrompt,
     messages: [
       {

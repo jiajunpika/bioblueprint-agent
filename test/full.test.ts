@@ -1,8 +1,9 @@
 import "dotenv/config";
 import { preprocessImages, getExifSummary } from "../src/utils/preprocess";
 import { analyzeWithAllPhases, AnalysisResult } from "../src/pipeline";
-import { readMeta, updateMetaContext } from "../src/utils/meta";
+import { readMeta, updateMetaContext, updateMetaKnown } from "../src/utils/meta";
 import { MetaFile } from "../src/types/meta";
+import { promptForMissingFields, isInteractiveMode } from "../src/utils/interactive";
 import fs from "fs/promises";
 import path from "path";
 
@@ -80,12 +81,38 @@ async function main() {
       console.log(`\nContext saved to ${inputDir}/meta.json`);
     }
 
-    // Use character_name for filename if available
-    const blueprint = result.blueprint;
+    // Step 3: Interactive prompting for missing fields (if TTY)
+    let blueprint = result.blueprint;
+    const enableInteractive = process.argv.includes("--interactive") || process.argv.includes("-i");
+
+    if (enableInteractive && isInteractiveMode()) {
+      console.log("\n[Step 3] Interactive input for missing fields...");
+      const updatedKnown = await promptForMissingFields(meta.known, blueprint, false);
+
+      // Save updated known info to meta.json
+      if (Object.keys(updatedKnown).length > 0) {
+        await updateMetaKnown(inputDir, updatedKnown);
+        console.log(`Updated known info saved to ${inputDir}/meta.json`);
+
+        // Re-apply known info to blueprint (snake_case in output JSON)
+        const profile = blueprint.profile as any;
+        if (profile?.identity_card) {
+          if (updatedKnown.gender) profile.identity_card.gender = updatedKnown.gender;
+          if (updatedKnown.ageRange) profile.identity_card.age = updatedKnown.ageRange;
+          if (updatedKnown.location) profile.identity_card.location = updatedKnown.location;
+          if (updatedKnown.occupation) profile.identity_card.occupation = updatedKnown.occupation;
+        }
+      }
+    } else if (enableInteractive) {
+      console.log("\n[Step 3] Skipping interactive input (not a TTY)");
+    }
+
+    // Use character_name + timestamp for filename to preserve versions
     const characterName = blueprint.character_name || "unknown";
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "").slice(0, 15);
     const finalOutputFile = process.argv[3]
       ? process.argv[3]
-      : path.join(resultsDir, `${characterName}.json`);
+      : path.join(resultsDir, `${characterName}_${timestamp}.json`);
 
     // Save result
     await fs.writeFile(finalOutputFile, JSON.stringify(blueprint, null, 2));

@@ -1,0 +1,65 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "character_name": "tutu_shanghai_mom",
+  "profile": {
+    "identity_card": {
+      "gender": "Female",
+      "age": "25-32",
+      "location": "Shanghai, China",
+      "occupation": "Content Creator",
+      "interests": [
+        "Parenting",
+        "Music Production",
+        "Chinese Cuisine",
+        "Social Media",
+        "Travel"
+      ],
+      "bio": "A devoted new mother documenting her parenting journey through social media. Active content creator who shares baby milestones, family moments, and daily life experiences while balancing motherhood with creative pursuits in music production."
+    }
+  },
+  "blueprint": {
+    "core_personality": {
+      "core_persona": "A hands-on, devoted parent who finds joy in documenting and sharing her family's journey. She approaches motherhood with dedication and attention to detail, consistently caring for her baby while maintaining an active social media presence. Her nurturing nature extends beyond childcare to creating meaningful content that connects with other parents.",
+      "dominant_emotional_tone": "nurturing and enthusiastic"
+    },
+    "aesthetic_engine": {
+      "visual_style": "authentic family documentation with grid-style social media layouts"
+    },
+    "simulation": {
+      "daily_routine": {
+        "wake_time": "07:00",
+        "bed_time": "22:30",
+        "typical_schedule": {
+          "morning": "Baby feeding routine and morning care",
+          "afternoon": "Family outings to playgrounds and activities, content creation",
+          "evening": "Family time, baby care, and music production when baby sleeps"
+        }
+      }
+    },
+    "backstory": {
+      "family": "Married with a baby born in 2024. Lives with husband who is actively involved in childcare. Extended family including grandmother participates in family activities and outings.",
+      "origin": "Shanghai-based with strong connection to Chinese culture and cuisine",
+      "life_events": [
+        {
+          "event": "Became a mother in 2024",
+          "impact": "Transformed daily routine around baby care and documentation"
+        },
+        {
+          "event": "Started social media documentation",
+          "impact": "Built following through authentic parenting content sharing"
+        },
+        {
+          "event": "Travel to Tokyo",
+          "impact": "Expanded cultural experiences and travel content"
+        }
+      ]
+    },
+    "goal": {
+      "long_term_aspirations": [
+        "Document complete parenting journey",
+        "Build supportive parent community through content",
+        "Balance creative pursuits with motherhood"
+      ]
+    }
+  }
+}

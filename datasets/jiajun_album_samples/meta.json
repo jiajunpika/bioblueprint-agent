@@ -1,0 +1,853 @@
+{
+  "known": {
+    "gender": "Male",
+    "username": "@the_jiajun",
+    "name": "jiajun",
+    "ageRange": "28-35",
+    "location": "Palo Alto, CA",
+    "occupation": "AI Product Manager"
+  },
+  "context": {
+    "images": [
+      {
+        "imageIndex": 0,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.95
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9,
+          "reasoning": "Personal photo of baby"
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "high",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 1,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.95
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9,
+          "reasoning": "Personal photo of children"
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "high",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 2,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.95
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9,
+          "reasoning": "Personal photo of children"
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "high",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 3,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": [
+            "69.35",
+            "61.95",
+            "69.95"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 4,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 5,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "work",
+          "confidence": 0.85
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 6,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 7,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 8,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "work",
+          "confidence": 0.8
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 9,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [
+            "HONEST",
+            "WELEDA"
+          ],
+          "otherText": [
+            "$5.69",
+            "$12.99",
+            "$13.99",
+            "$12.99",
+            "$14.24",
+            "$14.24"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 10,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [
+            "Low Price",
+            "OLLY",
+            "CALM",
+            "MaryCann's"
+          ],
+          "otherText": [
+            "$17.79",
+            "$18.49",
+            "$26.99",
+            "$14.99",
+            "$20.49",
+            "$13.99"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 11,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 12,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.85
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.8
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 13,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.85
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.8
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 14,
+        "sourceType": {
+          "value": "app_screenshot",
+          "confidence": 0.95,
+          "reasoning": "Mobile interface with status bar and UI elements"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.8
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.7
+        },
+        "contentFormat": {
+          "value": "full_screen",
+          "confidence": 0.9
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.95,
+          "reasoning": "Lock screen showing personal photo"
+        },
+        "visibleText": {
+          "uiLanguage": "zh-CN",
+          "usernames": [],
+          "timestamps": [
+            "24 周三",
+            "下午 6:45",
+            "6:27"
+          ],
+          "keyLabels": [
+            "Tello",
+            "5G",
+            "Check 信箱",
+            "LATCH"
+          ],
+          "otherText": [
+            "50"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "high",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 15,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.85
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.8
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 16,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 17,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 18,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "shopping",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "content_browsing",
+          "confidence": 0.85
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [
+            "CLIXO"
+          ],
+          "otherText": [
+            "$5"
+          ]
+        },
+        "privacySensitivity": {
+          "level": "medium",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 19,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "high",
+          "flags": [
+            "contains_face"
+          ]
+        }
+      },
+      {
+        "imageIndex": 20,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "work",
+          "confidence": 0.85
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "en-US",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [
+            "LG"
+          ],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      },
+      {
+        "imageIndex": 21,
+        "sourceType": {
+          "value": "camera_photo",
+          "confidence": 0.98,
+          "reasoning": "EXIF data confirms iPhone camera capture"
+        },
+        "contentDomain": {
+          "value": "daily_life",
+          "confidence": 0.9
+        },
+        "interactionMode": {
+          "value": "unknown",
+          "confidence": 0.6
+        },
+        "contentFormat": {
+          "value": "single_image",
+          "confidence": 0.95
+        },
+        "subjectRelation": {
+          "value": "own_account",
+          "confidence": 0.9
+        },
+        "visibleText": {
+          "uiLanguage": "none",
+          "usernames": [],
+          "timestamps": [],
+          "keyLabels": [],
+          "otherText": []
+        },
+        "privacySensitivity": {
+          "level": "low",
+          "flags": []
+        }
+      }
+    ],
+    "summary": {
+      "dominantSourceType": "camera_photo",
+      "dominantDomain": "daily_life",
+      "dominantFormat": "single_image",
+      "detectedUsernames": [],
+      "detectedApps": [],
+      "overallPrivacyLevel": "medium"
+    }
+  }
+}
