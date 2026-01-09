@@ -46,6 +46,9 @@ const upload = multer({
 // Middleware
 app.use(express.json());
 
+// Serve static files (frontend)
+app.use(express.static("public"));
+
 // Health check endpoint
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
@@ -108,6 +111,77 @@ app.get("/api/task/:id", (req, res) => {
   }
 
   res.json(response);
+});
+
+// GET /api/datasets - List available test datasets
+app.get("/api/datasets", async (req, res) => {
+  try {
+    const datasetsDir = path.join(__dirname, "../datasets");
+    const dirs = await fs.readdir(datasetsDir);
+
+    const datasets = await Promise.all(
+      dirs.map(async (dir) => {
+        const dirPath = path.join(datasetsDir, dir);
+        const stat = await fs.stat(dirPath);
+
+        if (!stat.isDirectory()) return null;
+
+        // Count images in directory
+        const files = await fs.readdir(dirPath);
+        const imageFiles = files.filter((f) =>
+          /\.(jpg|jpeg|png|heic)$/i.test(f)
+        );
+
+        return {
+          name: dir,
+          imageCount: imageFiles.length,
+        };
+      })
+    );
+
+    res.json(datasets.filter((d) => d !== null));
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/analyze-dataset - Analyze using a test dataset
+app.post("/api/analyze-dataset", async (req, res) => {
+  try {
+    const { dataset } = req.body;
+
+    if (!dataset) {
+      return res.status(400).json({ error: "Dataset name required" });
+    }
+
+    const datasetPath = path.join(__dirname, "../datasets", dataset);
+
+    // Check if dataset exists
+    try {
+      await fs.access(datasetPath);
+    } catch {
+      return res.status(404).json({ error: "Dataset not found" });
+    }
+
+    // Create task
+    const taskId = randomUUID();
+    const task = createTask(taskId);
+
+    // Return task ID immediately
+    res.json({ taskId });
+
+    // Process dataset asynchronously
+    processImagesAsync(taskId, datasetPath).catch((error) => {
+      console.error(`Task ${taskId} failed:`, error);
+      updateTask(taskId, {
+        status: "failed",
+        error: error.message,
+      });
+    });
+  } catch (error: any) {
+    console.error("Dataset analysis error:", error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Async image processing function

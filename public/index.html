@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioBlueprint API Tester</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    .section h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .upload-area {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .upload-area:hover {
+      border-color: #4CAF50;
+      background: #f0f8f0;
+    }
+    .upload-area.dragover {
+      border-color: #4CAF50;
+      background: #e8f5e9;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .dataset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .dataset-card {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dataset-card:hover {
+      border-color: #4CAF50;
+      background: #f0f8f0;
+    }
+    .dataset-card.selected {
+      border-color: #4CAF50;
+      background: #e8f5e9;
+    }
+    .dataset-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .dataset-count {
+      color: #666;
+      font-size: 13px;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      display: none;
+    }
+    .status.show {
+      display: block;
+    }
+    .status.pending {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+    }
+    .status.processing {
+      background: #cfe2ff;
+      border-left: 4px solid #0d6efd;
+    }
+    .status.completed {
+      background: #d1e7dd;
+      border-left: 4px solid #198754;
+    }
+    .status.failed {
+      background: #f8d7da;
+      border-left: 4px solid #dc3545;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 6px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 13px;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #4CAF50;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧬 BioBlueprint API Tester</h1>
+    <p class="subtitle">上传图片或使用测试数据集进行分析</p>
+
+    <!-- Upload Section -->
+    <div class="section">
+      <h2>📤 上传图片</h2>
+      <div class="upload-area" id="uploadArea">
+        <p>拖拽图片到这里，或点击选择文件</p>
+        <p style="color: #999; font-size: 13px; margin-top: 10px;">支持 JPG, PNG, HEIC 格式</p>
+        <input type="file" id="fileInput" multiple accept="image/jpeg,image/png,image/heic">
+      </div>
+      <div id="fileList" style="margin-top: 15px;"></div>
+      <button class="btn" id="uploadBtn" style="margin-top: 15px;" disabled>开始分析</button>
+    </div>
+
+    <!-- Test Datasets Section -->
+    <div class="section">
+      <h2>🗂️ 使用测试数据集</h2>
+      <div id="datasetsLoading">加载数据集中...</div>
+      <div class="dataset-grid" id="datasetGrid" style="display: none;"></div>
+      <button class="btn" id="datasetBtn" style="margin-top: 15px; display: none;" disabled>使用选中的数据集</button>
+    </div>
+
+    <!-- Status Section -->
+    <div class="status" id="status"></div>
+
+    <!-- Result Section -->
+    <div id="resultContainer"></div>
+  </div>
+
+  <script>
+    const API_BASE = window.location.origin;
+    let selectedFiles = [];
+    let selectedDataset = null;
+    let currentTaskId = null;
+
+    // File upload
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    const uploadBtn = document.getElementById('uploadBtn');
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+
+    function handleFiles(files) {
+      selectedFiles = Array.from(files);
+      fileList.innerHTML = `<p>已选择 ${selectedFiles.length} 个文件</p>`;
+      uploadBtn.disabled = selectedFiles.length === 0;
+    }
+
+    uploadBtn.addEventListener('click', async () => {
+      if (selectedFiles.length === 0) return;
+
+      const formData = new FormData();
+      selectedFiles.forEach(file => formData.append('images', file));
+
+      uploadBtn.disabled = true;
+      showStatus('上传中...', 'pending');
+
+      try {
+        const response = await fetch(`${API_BASE}/api/analyze`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        currentTaskId = data.taskId;
+
+        showStatus(`任务已创建: ${currentTaskId}`, 'processing');
+        pollTaskStatus(currentTaskId);
+      } catch (error) {
+        showStatus(`错误: ${error.message}`, 'failed');
+        uploadBtn.disabled = false;
+      }
+    });
+
+    // Load datasets
+    async function loadDatasets() {
+      try {
+        const response = await fetch(`${API_BASE}/api/datasets`);
+        const datasets = await response.json();
+
+        const grid = document.getElementById('datasetGrid');
+        const loading = document.getElementById('datasetsLoading');
+
+        loading.style.display = 'none';
+        grid.style.display = 'grid';
+        document.getElementById('datasetBtn').style.display = 'inline-block';
+
+        grid.innerHTML = datasets.map(ds => `
+          <div class="dataset-card" data-name="${ds.name}">
+            <div class="dataset-name">${ds.name}</div>
+            <div class="dataset-count">${ds.imageCount} 张图片</div>
+          </div>
+        `).join('');
+
+        grid.querySelectorAll('.dataset-card').forEach(card => {
+          card.addEventListener('click', () => {
+            grid.querySelectorAll('.dataset-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedDataset = card.dataset.name;
+            document.getElementById('datasetBtn').disabled = false;
+          });
+        });
+      } catch (error) {
+        document.getElementById('datasetsLoading').textContent = '加载失败';
+      }
+    }
+
+    document.getElementById('datasetBtn').addEventListener('click', async () => {
+      if (!selectedDataset) return;
+
+      const btn = document.getElementById('datasetBtn');
+      btn.disabled = true;
+      showStatus('使用数据集分析中...', 'processing');
+
+      try {
+        const response = await fetch(`${API_BASE}/api/analyze-dataset`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ dataset: selectedDataset })
+        });
+
+        const data = await response.json();
+        currentTaskId = data.taskId;
+
+        showStatus(`任务已创建: ${currentTaskId}`, 'processing');
+        pollTaskStatus(currentTaskId);
+      } catch (error) {
+        showStatus(`错误: ${error.message}`, 'failed');
+        btn.disabled = false;
+      }
+    });
+
+    // Poll task status
+    async function pollTaskStatus(taskId) {
+      const interval = setInterval(async () => {
+        try {
+          const response = await fetch(`${API_BASE}/api/task/${taskId}`);
+          const data = await response.json();
+
+          if (data.status === 'completed') {
+            clearInterval(interval);
+            showStatus('✓ 分析完成', 'completed');
+            displayResult(data.result);
+            uploadBtn.disabled = false;
+            document.getElementById('datasetBtn').disabled = false;
+          } else if (data.status === 'failed') {
+            clearInterval(interval);
+            showStatus(`✗ 分析失败: ${data.error}`, 'failed');
+            uploadBtn.disabled = false;
+            document.getElementById('datasetBtn').disabled = false;
+          } else {
+            showStatus(`<div class="loading"></div> 处理中... (${data.status})`, 'processing');
+          }
+        } catch (error) {
+          clearInterval(interval);
+          showStatus(`错误: ${error.message}`, 'failed');
+        }
+      }, 3000);
+    }
+
+    function showStatus(message, type) {
+      const status = document.getElementById('status');
+      status.innerHTML = message;
+      status.className = `status show ${type}`;
+    }
+
+    function displayResult(result) {
+      const container = document.getElementById('resultContainer');
+      container.innerHTML = `
+        <div class="result">
+          <h3 style="margin-bottom: 15px;">分析结果</h3>
+          <pre>${JSON.stringify(result, null, 2)}</pre>
+        </div>
+      `;
+    }
+
+    // Initialize
+    loadDatasets();
+  </script>
+</body>
+</html>
