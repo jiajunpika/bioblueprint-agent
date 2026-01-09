@@ -79,7 +79,22 @@ cp .env.example .env
 
 ### 3. 准备图片
 
-将 Instagram 截图放入目录，支持 JPG/PNG/HEIC 格式。
+将 Instagram 截图放入 `datasets/` 目录，支持 JPG/PNG/HEIC 格式。
+
+```
+datasets/
+├── jiajun_album_samples/    # 相册随机选取 (22张)
+│   ├── IMG_3498.JPG
+│   └── ...
+├── instagram_story_grid/    # Story 合集缩略图 (7张)
+│   ├── IMG_8468.PNG
+│   └── ...
+```
+
+命名规范：
+- 使用小写字母和下划线
+- 按人名或项目名命名
+- 每个数据集一个子目录
 
 如果有 HEIC 格式，先转换：
 ```bash
@@ -90,8 +105,17 @@ for f in *.HEIC; do sips -s format jpeg "$f" --out "${f%.HEIC}.jpg"; done
 ### 4. 运行分析
 
 ```bash
-npm run test:full /path/to/images
+# 使用默认数据集 (datasets/jiajun_album_samples)
+npm run test:full
+
+# 指定数据集
+npm run test:full datasets/instagram_story_grid
+
+# 指定数据集和输出文件
+npm run test:full datasets/jiajun_album_samples results/custom_name.json
 ```
+
+测试结果自动保存到 `results/` 目录，命名格式：`bioblueprint_YYYYMMDD_HHMMSS.json`
 
 ## 输出示例
 
@@ -129,9 +153,12 @@ bioblueprint-agent/
 │   │   └── bioblueprint.ts  # 类型定义
 │   └── utils/
 │       └── preprocess.ts    # 图片预处理 + EXIF
-├── test/
-│   └── full.test.ts         # 完整测试
-└── results/                  # 分析结果
+├── datasets/                 # 测试数据集
+│   ├── jiajun_album_samples/ # 相册样本
+│   └── instagram_story_grid/ # Story 缩略图
+├── results/                  # 分析结果 (bioblueprint_YYYYMMDD_HHMMSS.json)
+└── test/
+    └── full.test.ts         # 完整测试
 ```
 
 ## 设计原则
@@ -153,6 +180,19 @@ bioblueprint-agent/
 ### 动态字段
 
 二级字段不固定，根据图片内容动态生成。只有 7 个顶级分类是固定的。
+
+## 开发工作流
+
+完成一次分析测试后，自动进行 commit 和 push：
+
+```bash
+npm run test:full
+git add .
+git commit -m "Add analysis results"
+git push
+```
+
+当前项目使用 jiajunpika GitHub 账户（`gh auth switch --user jiajunpika`）
 
 ## 迭代方向
 
